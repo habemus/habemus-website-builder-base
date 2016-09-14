@@ -4,6 +4,8 @@ const util = require('util');
 // third-party
 const HWorkerServer = require('h-worker/server');
 
+const errors = HWorkerServer.errors;
+
 /**
  * Server constructor function
  * 
@@ -22,10 +24,16 @@ function HBuilderServer(options, builderFn) {
   this.builderFn = builderFn || this.builderFn;
 
   if (!this.builderFn) {
-    throw new Error('builderFn is required');
+    throw new errors.InvalidOption('builderFn', 'required');
   }
 }
 util.inherits(HBuilderServer, HWorkerServer);
+
+/**
+ * Expose errors
+ * @type {Object}
+ */
+HBuilderServer.errors = errors;
 
 /**
  * HBuilderServer's special workerFn.

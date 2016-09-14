@@ -19,6 +19,11 @@
   },
   "devDependencies": {
     "express": "^4.14.0",
+    "fs-extra": "^0.30.0",
+    "gulp": "^3.9.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-istanbul": "^1.1.1",
+    "gulp-mocha": "^3.0.1",
     "multer": "^1.2.0",
     "server-destroy": "^1.0.1",
     "should": "^11.1.0"

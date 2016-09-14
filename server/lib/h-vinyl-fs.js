@@ -45,6 +45,8 @@ util.inherits(HVFs, EventEmitter);
  * @return {Vinyl Read Stream}
  */
 HVFs.prototype.src = function (patterns, userOptions) {
+  userOptions = userOptions || {};
+
   patterns = Array.isArray(patterns) ? patterns : [patterns];
 
   patterns = patterns.map((pattern) => {

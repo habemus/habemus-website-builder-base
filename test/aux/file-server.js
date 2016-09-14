@@ -31,7 +31,10 @@ module.exports = function (options) {
    */
   var upload = multer({ dest: uploadsDir })
   app.post('/uploads',
-    upload.single('file')
+    upload.single('file'),
+    function (req, res, next) {
+      res.status(201).json(req.file);
+    }
   );
 
   return app;

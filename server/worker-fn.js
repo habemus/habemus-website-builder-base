@@ -4,6 +4,8 @@ const Bluebird = require('bluebird');
 // own
 const HVinylFs = require('./lib/h-vinyl-fs');
 
+const errors = require('h-worker/server').errors;
+
 /**
  * Function that executes the whole build process.
  * An overview of what it does:
@@ -24,11 +26,11 @@ function runBuild(data, logger) {
   var buildOptions     = data.options || {};
 
   if (!buildSrcOptions) {
-    throw new Error('buildSrcOptions required');
+    return Bluebird.reject(new errors.InvalidOption('data.src', 'required'));
   }
 
   if (!buildDestOptions) {
-    throw new Error('buildDestOptions required');
+    return Bluebird.reject(new errors.InvalidOption('data.dest', 'required'));
   }
 
   // variable to hold data about the

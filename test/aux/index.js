@@ -5,6 +5,7 @@ const http = require('http');
 // third-party
 const Bluebird = require('bluebird');
 const enableDestroy = require('server-destroy');
+const fse = require('fs-extra');
 
 // own
 const fileServer = require('./file-server');
@@ -19,9 +20,19 @@ exports.rabbitMQURI  = RABBIT_MQ_URI;
 exports.fixturesPath = FIXTURES_PATH;
 exports.tmpPath      = TMP_PATH;
 
+exports.errorExpected = function () {
+  return Bluebird.reject(new Error('error expected'));
+};
+
 exports.setup = function () {
 
   var _assets = {};
+
+  fse.emptyDirSync(TMP_PATH);
+
+  exports.registerTeardown(function () {
+    fse.emptyDirSync(TMP_PATH);
+  });
 
   return new Bluebird((resolve, reject) => {
     // start the file server

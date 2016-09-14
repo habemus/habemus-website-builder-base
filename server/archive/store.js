@@ -54,8 +54,13 @@ var strategies = {
 
           tmpFile.cleanup();
 
+          var statusCode = httpResponse.statusCode;
+          var statusCodeOk = (statusCode >= 200 && statusCode <= 299);
+
           if (err) {
             reject(err);
+          } else if (!statusCodeOk) {
+            reject(httpResponse);
           } else {
             resolve(httpResponse);
           }
