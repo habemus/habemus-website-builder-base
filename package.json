@@ -1,0 +1,26 @@
+{
+  "name": "h-builder",
+  "version": "0.0.0",
+  "description": "",
+  "main": "server/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^3.4.6",
+    "h-worker": "git+ssh://git@bitbucket.org/habemus-tutti/h-worker.git",
+    "request": "^2.74.0",
+    "root-path-builder": "git+ssh://git@bitbucket.org/habemus-tutti/root-path-builder.git",
+    "tmp": "0.0.28",
+    "vinyl-fs": "^2.4.3",
+    "zip-util": "git+ssh://git@bitbucket.org/habemus-tutti/zip-util.git"
+  },
+  "devDependencies": {
+    "express": "^4.14.0",
+    "multer": "^1.2.0",
+    "server-destroy": "^1.0.1",
+    "should": "^11.1.0"
+  }
+}
