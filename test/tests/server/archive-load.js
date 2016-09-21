@@ -26,8 +26,7 @@ describe('HBuilder#archiveLoad(srcOptions)', function () {
   it('should load the zip file from the url and unzip it into a temporary directory', function () {
 
     var server = new HBuilderServer({
-      rabbitMQURI: aux.rabbitMQURI,
-      taskName: 'test-build',
+      name: 'test-build',
     }, function builderFn(options, vfs, logger) {
 
     });
@@ -58,8 +57,7 @@ describe('HBuilder#archiveLoad(srcOptions)', function () {
 
   it('should error if the url provided returns 404', function () {
     var server = new HBuilderServer({
-      rabbitMQURI: aux.rabbitMQURI,
-      taskName: 'test-build',
+      name: 'test-build',
     }, function builderFn(options, vfs, logger) {
 
     });

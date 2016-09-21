@@ -29,8 +29,7 @@ describe('HBuilder#workerFn(data, logger)', function () {
   it('should require data.src property', function () {
 
     var server = new HBuilderServer({
-      rabbitMQURI: aux.rabbitMQURI,
-      taskName: 'test-build',
+      name: 'test-build',
     }, function builderFn(options, vfs, logger) {});
 
     return server.workerFn({
@@ -50,8 +49,7 @@ describe('HBuilder#workerFn(data, logger)', function () {
   it('should require data.dest property', function () {
 
     var server = new HBuilderServer({
-      rabbitMQURI: aux.rabbitMQURI,
-      taskName: 'test-build',
+      name: 'test-build',
     }, function builderFn(options, vfs, logger) {});
 
     return server.workerFn({
@@ -73,8 +71,7 @@ describe('HBuilder#workerFn(data, logger)', function () {
     var ERROR_LOG_COUNT = 0;
 
     var server = new HBuilderServer({
-      rabbitMQURI: aux.rabbitMQURI,
-      taskName: 'test-build',
+      name: 'test-build',
     }, function builderFn(options, vfs, logger) {
 
       // check that the options are passed to the

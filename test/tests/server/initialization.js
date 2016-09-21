@@ -29,8 +29,7 @@ describe('HBuilder#workerFn(data, logger)', function () {
   it('should require builderFn to be defined', function () {
     assert.throws(function () {
       var server = new HBuilderServer({
-        rabbitMQURI: aux.rabbitMQURI,
-        taskName: 'test-build',
+        name: 'test-build',
       }, undefined);
     }, HBuilderServer.errors.InvalidOption);
   });

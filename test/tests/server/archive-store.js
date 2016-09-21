@@ -27,8 +27,7 @@ describe('HBuilder#archiveStore(destOptions)', function () {
   it('should create a zip archive of a directory and send it to the given host', function () {
 
     var server = new HBuilderServer({
-      rabbitMQURI: aux.rabbitMQURI,
-      taskName: 'test-build',
+      name: 'test-build',
     }, function builderFn(options, vfs, logger) {
 
     });
@@ -47,8 +46,7 @@ describe('HBuilder#archiveStore(destOptions)', function () {
 
   it('should error if the upload fails', function () {
     var server = new HBuilderServer({
-      rabbitMQURI: aux.rabbitMQURI,
-      taskName: 'test-build',
+      name: 'test-build',
     }, function builderFn(options, vfs, logger) {
 
     });
