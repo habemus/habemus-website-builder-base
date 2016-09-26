@@ -24,7 +24,7 @@ HBuilderClient.errors = errors;
 
 /**
  * Schedules a build workload request
- * It simply formats the message to pass to the scheduleWorkloadRequest method
+ * It simply formats the message to pass to the schedule method
  * 
  * @param  {String} src     From where files will be loaded
  * @param  {Object} dest    To where files should be sent
@@ -44,7 +44,7 @@ HBuilderClient.prototype.scheduleBuild = function (src, dest, options) {
     return Bluebird.reject(new errors.InvalidOption('dest', 'required'));
   }
 
-  return this.scheduleWorkloadRequest({
+  return this.schedule({
     src: src,
     dest: dest,
     options: options

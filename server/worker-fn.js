@@ -33,9 +33,10 @@ function runBuild(data, logger) {
     return Bluebird.reject(new errors.InvalidOption('data.dest', 'required'));
   }
 
-  // variable to hold data about the
-  // tmpDir
+  // variables to hold data that will
+  // become availabe as promises get done
   var _tmpDir;
+  var _buildReport;
 
   /**
    * Load the archive upon which building will be run
@@ -61,7 +62,9 @@ function runBuild(data, logger) {
        */
       return this.builderFn(buildOptions, vfs, logger);
     })
-    .then(() => {
+    .then((buildReport) => {
+
+      _buildReport = buildReport;
 
       /**
        * Once the builderFn is done, store the results
