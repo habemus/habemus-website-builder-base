@@ -80,6 +80,9 @@ function runBuild(data, logger) {
        * with content in them.
        */
       _tmpDir.cleanup();
+
+      // return the report at the end
+      return _buildReport;
     });
 }
 
