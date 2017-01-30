@@ -28,7 +28,16 @@ function _zip(dirPath) {
 
     tmp.file((err, filePath, fd, cleanupCallback) => {
       var writeStream = fs.createWriteStream(filePath);
-      zipUtil.zip(dirPath + '/**/*')
+
+      var globPaths = [
+        dirPath + '/**/*',
+        '!**/.git',
+        '!**/.git/**',
+        '!**/.habemus',
+        '!**/.habemus/**'
+      ];
+
+      zipUtil.zip(globPaths, { dot: true })
         .pipe(writeStream)
         .on('error', reject)
         .on('finish', () => {
@@ -65,26 +74,7 @@ var strategies = {
 
     var headers = storeOptions.headers;
 
-    return new Bluebird((resolve, reject) => {
-
-      // TBD: eliminate the need for a temporary file.
-      // we are having lots of trouble in creating a
-      // write stream using request module.
-
-      tmp.file((err, filePath, fd, cleanupCallback) => {
-        var writeStream = fs.createWriteStream(filePath);
-        zipUtil.zip(dirPath + '/**/*')
-          .pipe(writeStream)
-          .on('error', reject)
-          .on('finish', () => {
-            resolve({
-              path: filePath,
-              cleanup: cleanupCallback
-            });
-          });
-      });
-    })
-    .then((tmpFile) => {
+    return _zip(dirPath).then((tmpFile) => {
 
       return new Bluebird((resolve, reject) => {
         var formData = {};
