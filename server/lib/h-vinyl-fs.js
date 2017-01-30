@@ -23,6 +23,12 @@ const VINYL_FS_SRC_OPTIONS = [
         return this.root.prependTo(value);
       }
     }
+  },
+  {
+    name: 'dot',
+    fn: function (value) {
+      return value;
+    }
   }
 ];
 
