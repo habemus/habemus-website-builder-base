@@ -3,18 +3,18 @@ const util = require('util');
 
 // third-party
 const Bluebird = require('bluebird');
-const HWorkerClient = require('h-worker/client');
+const AMQPWorkerClient = require('@habemus/amqp-worker/client');
 
-const errors = HWorkerClient.errors;
+const errors = AMQPWorkerClient.errors;
 
 /**
  * Builder client constructor
  * @param {Object} options
  */
 function HBuilderClient(options) {
-  HWorkerClient.call(this, options);
+  AMQPWorkerClient.call(this, options);
 }
-util.inherits(HBuilderClient, HWorkerClient);
+util.inherits(HBuilderClient, AMQPWorkerClient);
 
 /**
  * Expose errors as static property

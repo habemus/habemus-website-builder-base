@@ -4,7 +4,7 @@ const Bluebird = require('bluebird');
 // own
 const HVinylFs = require('./lib/h-vinyl-fs');
 
-const errors = require('h-worker/server').errors;
+const errors = require('@habemus/amqp-worker/server').errors;
 
 /**
  * Function that executes the whole build process.

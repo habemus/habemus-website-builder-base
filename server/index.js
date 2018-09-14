@@ -2,9 +2,9 @@
 const util = require('util');
 
 // third-party
-const HWorkerServer = require('h-worker/server');
+const AMQPWorkerServer = require('@habemus/amqp-worker/server');
 
-const errors = HWorkerServer.errors;
+const errors = AMQPWorkerServer.errors;
 
 /**
  * Server constructor function
@@ -14,7 +14,7 @@ const errors = HWorkerServer.errors;
  */
 function HBuilderServer(options, builderFn) {
   
-  HWorkerServer.call(this, options);
+  AMQPWorkerServer.call(this, options);
 
   /**
    * Function to be invoked with the data 
@@ -27,7 +27,7 @@ function HBuilderServer(options, builderFn) {
     throw new errors.InvalidOption('builderFn', 'required');
   }
 }
-util.inherits(HBuilderServer, HWorkerServer);
+util.inherits(HBuilderServer, AMQPWorkerServer);
 
 /**
  * Expose errors
